@@ -6,6 +6,8 @@
 
   tasks:
 
-    - debug: msg="{{ media_sapcar}}"
+    - name: "debug variable value media_sapcar"
+      debug: msg="{{ media_sapcar}}"
 
-    - debug: msg="{{ package_retries_delay}}"
+    - name: "debug variable value package_retries_delay"
+      debug: msg="{{ package_retries_delay}}"
