@@ -11,3 +11,11 @@
 
     - name: "debug variable value package_retries_delay"
       debug: msg="{{ package_retries_delay}}"
+      
+      
+    - name: "debug variable value nw_ci_instance_ciInstanceNumber"
+      debug: msg="{{ nw_ci_instance_ciInstanceNumber}}"
+      
+      
+    - name: "debug variable value nw_ci_instance_ascsInstanceNumber"
+      debug: msg="{{ nw_ci_instance_ascsInstanceNumber}}"
