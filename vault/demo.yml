@@ -1,0 +1,62 @@
+---
+
+- name: demo
+
+  hosts: all
+
+  become: false
+
+
+  tasks:
+
+    - name: Get password
+
+      ansible.builtin.uri:
+
+        url: "{{ server }}{{ endpoint }}{{key}}"
+
+        method: GET
+ 
+        return_content: yes
+
+        headers:
+         Authorization: "{{ vault_token }}"
+
+        status_code: 200
+
+        body_format: json
+
+        timeout: 30
+
+      register: result
+
+
+    - name: Print returned json dictionary
+
+      debug:
+
+        msg: "{{(result.content | from_json)['data']['value']}}"
+
+
+    - name: Extract password from json
+
+      set_fact:
+
+        password: "{{(result.content | from_json)['data']['value']}}"
+
+
+
+    - name: Print value
+
+      debug:
+
+        msg: "{{password}}"
+
+
+
+    - name: Copy value
+      copy:
+
+        content: "{{ password }}"
+
+        dest: "/tmp/password"
