@@ -5,6 +5,6 @@
 - name: Deploy inventory file
   template:
     src: test.yml.j2
-    dest: ./adm_hosts.yml
+    dest: ./test.yml
     mode: '0777'
   delegate_to: 127.0.0.1
