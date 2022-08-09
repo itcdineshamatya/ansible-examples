@@ -2,9 +2,17 @@
 
 
 
-- name: Deploy inventory file
+- name: Deploy to selected playbook diretory
   template:
     src: test.yml.j2
     dest: ./test.yml
+    mode: '0777'
+  delegate_to: 127.0.0.1
+  
+  
+- name: Deploy to home directory
+  template:
+    src: test-home.yml.j2
+    dest: ../test.yml
     mode: '0777'
   delegate_to: 127.0.0.1
